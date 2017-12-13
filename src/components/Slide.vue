@@ -39,11 +39,11 @@
       }
     },
     methods: {
-      handleChange (e) {
-        console.dir(this.swiper)
+      handleChange () {
         // TODO 当图片是黑色的那张时，切换后面背景为白色
         // console.dir(this.swiper && this.swiper.activeIndex)
         // console.dir(this.$refs.mySwiper.swiper)
+        this.$emit('updateWhite', this.$refs.mySwiper.swiper)
       }
     }
   }
