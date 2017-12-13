@@ -5,9 +5,9 @@
 			<small>发现生活的美，找到属于自己的兴趣</small>
 		</div>
 		<ul class="list">
-			<li v-for="(item,index) in section" :key="index">
-				<a href=""><img :src="item.src" alt=""></a>
-				<div class="mask">
+			<li v-for="(item,index) in section" :key="index"  @mouseenter="enter(index)" @mouseleave="leave(index)">
+				    <a  :style='{background:"url("+ item.src +")"}'></a>
+				<div class="mask"  v-show="isShow==index">
 					<div class="info-wrap">
 						<div class="bound-effect">
 							<i class="lt"></i>
@@ -30,8 +30,18 @@
 	  name: 'header',
 	  data () {
     return {
-	      isToggle: false
+	      isToggle: false,
+	      isShow: 1
     }
+  },
+  methods: {
+    enter: function (index) {
+	      this.isShow = index
+    },
+	    leave: function () {
+	      this.isShow = -1
+    }
+
   },
 	  props: {
 	    section: {
@@ -39,6 +49,7 @@
 	      default: []
     }
   }
+	
 	}
 </script>
 <style lang='less' scoped>
@@ -60,10 +71,11 @@
 				margin-bottom: 20px;
 			}
 		}
-		.list {
+		.list {	
 			display: flex;
 			justify-content: center;
 			flex-wrap: wrap;
+			width: 100%;
 			li {
 				width: 100%;
 				flex: 1 1 30%;
@@ -73,14 +85,10 @@
 				cursor: pointer;
 				 a {
 					display: inline-block;
-					max-width: 100%;
-					img {
-						max-width: 100%;
-						background-size: 100%;
-					}
-				}
-				.mask:hover {
-					display: block;
+					width: 100%;
+				  height: 100%;
+					background-size: cover;
+					background-position: 50%;
 				}
 				.mask {
 					position: absolute;
@@ -89,7 +97,6 @@
 					top: 0;
 					width: 100%;
 					height: 100%;
-					display: none;
 					background: rgba(125, 125, 125, 0.7);
 					.info-wrap {
 						position: absolute;
@@ -160,20 +167,29 @@
 
 	@media screen and (max-width:767px) {
 		.container {
+			width: 100%!important;
 			.text_h2 {
 				font-size: 20px !important;
 				margin-bottom: 10px !important;
 			}
+			li{
+				height: 150px!important;
+			}
+			.mask{
+				// height: 65%!important;
+			
 			small {
 				font-size: 12px !important;
 			}
 			a {
-				max-width: 240px;
+				width: 150px!important;
+				height:150px!important;
 			}
 			.bound-effect {
-				height: 60%!important;
+				height: 54%!important;
 				top: 20%!important;
-			}
+		 	}
+		}
 			.text-middle {
 				.text_h3 {
 					font-size: 12px!important;

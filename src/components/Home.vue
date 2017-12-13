@@ -3,6 +3,7 @@
     <my-header :title='titleArr'></my-header>
     <my-slide :slides='slideItems' @updateWhite='handleUpdate'></my-slide>
     <my-section :section='sectionImg'></my-section>
+    <my-slides :slides='slideItems'></my-slides>
   </div>
 </template>
 
@@ -10,6 +11,7 @@
   import myHeader from './Header'
   import mySlide from './Slide'
   import mySection from './Sections'
+  import mySlides from './Slide_2.vue'
   export default {
     name: 'home',
     data () {
@@ -98,7 +100,7 @@
       }
     },
     components: {
-      myHeader, mySlide, mySection
+      myHeader, mySlide, mySection, mySlides
     },
     methods: {
       handleUpdate (value) {

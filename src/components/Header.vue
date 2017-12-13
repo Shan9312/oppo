@@ -1,6 +1,6 @@
 <template>
   <div class='container header' :class="{white:white}">
-    <div class='pc'>
+    <div class='pc' :class="{white:white}">
       <div class='logoDiv'>
         <a href="#" class='logo'></a>
       </div>
@@ -12,7 +12,7 @@
         <a href="item.url" v-for='(item,index) in title' :key='index' v-text='item.label'></a>
       </div>
     </div>
-    <div class='phone'>
+    <div class='phone' :class="{white:white}">
       <div class='nav' :class="{active:isToggle}" @click='handleNavClick'>
         <i></i><br>
         <i></i><br>
