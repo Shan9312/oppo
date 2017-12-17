@@ -6,7 +6,7 @@
 		</div>
 		<ul class="list">
 			<li v-for="(item,index) in section" :key="index"  @mouseenter="enter(index)" @mouseleave="leave(index)">
-				    <a  :style='{background:"url("+ item.src +")"}'></a>
+				    <a  :style='{backgroundImage:"url("+ item.src +")"}'></a>
 				<div class="mask"  v-show="isShow==index">
 					<div class="info-wrap">
 						<div class="bound-effect">
@@ -31,7 +31,7 @@
 	  data () {
     return {
 	      isToggle: false,
-	      isShow: 1
+	      isShow: -1
     }
   },
   methods: {
@@ -54,7 +54,7 @@
 </script>
 <style lang='less' scoped>
 	.section {
-		margin-top: 100px;
+		margin-top: 60px;
 		text-align: center;
 		.title {
 			h2 {
@@ -89,6 +89,7 @@
 				  height: 100%;
 					background-size: cover;
 					background-position: 50%;
+					background-repeat: no-repeat;
 				}
 				.mask {
 					position: absolute;
@@ -147,7 +148,7 @@
 						}
 						.text-middle {
 							width: 100%;
-							height: 100%;
+							height: 50%;
 							color: #fff;
 							h3 {
 								width: 100%;
@@ -170,7 +171,7 @@
 			width: 100%!important;
 			.text_h2 {
 				font-size: 20px !important;
-				margin-bottom: 10px !important;
+				// margin-bottom: 10px !important;
 			}
 			li{
 				height: 150px!important;
@@ -186,7 +187,7 @@
 				height:150px!important;
 			}
 			.bound-effect {
-				height: 54%!important;
+				height: 60%!important;
 				top: 20%!important;
 		 	}
 		}

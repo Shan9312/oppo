@@ -1,12 +1,22 @@
 <template>
   <div class='my-slide container' >
-    <swiper :options="swiperOption" ref="mySwiper">
-      <!-- slides -->
-      <swiper-slide v-for='(item,index) in slides' :key='index'>
-        <a :href="item.url" class='bgimg' :style='{background:"url("+ item.bg +")"}'></a>
-      </swiper-slide>
-      <div class="swiper-pagination"  slot="pagination"></div>
-    </swiper>
+    <div class="title">
+			<h2 class="text_h2">——O粉活动——</h2>
+			<small>O粉活动</small>
+		</div>
+     <swiper :options="swiperOption">
+        <swiper-slide v-for='(item,index) in slidesImg' :key='index'>
+          <a :href="item.url" class='bgimg' :style='{background:"url("+ item.src+")"}'></a>
+        </swiper-slide>
+        <div class="swiper-pagination" slot="pagination"></div>
+      </swiper>
+      <div class='container' >
+        <div class="title">
+          <h2 class="text_h2">——APP下载——</h2>
+          <small>更多奇妙玩法，激活自己</small>
+        </div>
+        <div class="imgs"><img src="../assets/img/15126998018372.jpg" alt=""></div>
+      </div>
   </div>
 </template>
 
@@ -16,19 +26,19 @@
     data () {
       return {
         swiperOption: {
+          slidesPerView: 3,
+          spaceBetween: 30,
           loop: true,
           autoplay: true,
           pagination: {
-            el: '.swiper-pagination'
-          },
-          on: {
-            slideChange: this.handleChange
+            el: '.swiper-pagination',
+            clickable: true
           }
         }
       }
     },
     props: {
-      slides: {
+      slidesImg: {
         type: Array,
         default: []
       }
@@ -50,11 +60,28 @@
 </script>
 
 <style lang='less' scoped>
+  
+	.title {
+    text-align: center;
+			h2 {
+				color: #05b570;
+				font-size: 36px;
+				height: 36px;
+				margin-bottom: 20px;
+				font-weight: 400;
+			}
+			small {
+				display: block;
+				color: #666;
+				font-size: 16px;
+				margin-bottom: 20px;
+			}
+		}
 .my-slide{
-	margin-top:100px;
+  margin:80px auto;
   .bgimg{
     display: inline-block;
-    height:350px;
+    height:260px;
     width:100%;
     background-position: center!important;
     background-size:cover!important;
@@ -64,12 +91,34 @@
     height:50px;
     line-height: 50px;
   }
+  .container{
+     .imgs{
+        margin:0 auto;
+        width: 100%;
+        text-align: center;
+        img{
+          width: 100%;
+          height: 100%;
+        }
+     }
+  }
   @media screen and (min-width:768px) and (max-width:991px){
-    
+     
   }
   @media screen and (max-width:767px){
     .bgimg{
-      height:230px;
+      height:140px;
+      width:100%;
+    }
+    .container{
+      .imgs{
+        margin:0 auto;
+        width: 100%;
+        text-align: center;
+        img{
+          width: 100%;
+        }
+     }
     }
   }
 }

@@ -1,9 +1,10 @@
 <template>
   <div class="home">
-    <my-header :title='titleArr'></my-header>
+    <my-header :title='titleArr' :white='white'></my-header>
     <my-slide :slides='slideItems' @updateWhite='handleUpdate'></my-slide>
     <my-section :section='sectionImg'></my-section>
-    <my-slides :slides='slideItems'></my-slides>
+    <my-slides :slidesImg='slideSecond'></my-slides>
+    <my-footer></my-footer>
   </div>
 </template>
 
@@ -12,6 +13,7 @@
   import mySlide from './Slide'
   import mySection from './Sections'
   import mySlides from './Slide_2.vue'
+  import myFooter from './Foot.vue'
   export default {
     name: 'home',
     data () {
@@ -96,16 +98,26 @@
             }
           }
         ],
-        white: false
+        white: false,
+        slideSecond: [
+          {src: require('../assets/img/m100.jpg')},
+          {src: require('../assets/img/m200.jpg')},
+          {src: require('../assets/img/m300.jpg')},
+          {src: require('../assets/img/m5.jpg')},
+          {src: require('../assets/img/main1.jpg')}
+        ]
       }
     },
     components: {
-      myHeader, mySlide, mySection, mySlides
+      myHeader, mySlide, mySection, mySlides, myFooter
     },
     methods: {
       handleUpdate (value) {
-        console.dir(value.snapIndex)
-        if (value.snapIndex === 4) {
+        if (!value) {
+          this.white = true
+          return
+        }
+        if (value.snapIndex === 4 || value.snapIndex === 1) {
           this.white = true
         } else {
           this.white = false

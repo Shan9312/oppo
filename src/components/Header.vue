@@ -8,7 +8,7 @@
         <i class='search'></i>
         <i class='user'></i>
       </div>
-      <div class='content'>
+      <div class='content' :class="{white:white}">
         <a href="item.url" v-for='(item,index) in title' :key='index' v-text='item.label'></a>
       </div>
     </div>
@@ -23,7 +23,7 @@
     </div>
     <transition enter-active-class="animated bounceInRight" leave-active-class="animated bounceOutLeft">
       <div v-if='isToggle' class='maskNav'>
-        <a href="item.url" v-for='(item,index) in title' :key='index' v-text='item.label'></a>
+        <a class="txt" href="item.url" v-for='(item,index) in title' :key='index' v-text='item.label'></a>
       </div>
     </transition>
   </div>
@@ -50,6 +50,7 @@
     methods: {
       handleNavClick () {
         this.isToggle = !this.isToggle
+        this.white = !this.white
       }
     }
   }
@@ -57,13 +58,20 @@
 
 <style scoped lang='less'>
   .white {
-    color:#fff!important;
+    color: #fff!important;
     a {
       color: #fff!important;
     }
     .logo {
       background-position: -92px -270px!important;
     }
+    .search {
+      background-position: -433px -218px !important;
+    }
+    .user {
+      background-position: -433px -280px !important;
+    }
+
   }
 
   .header {
@@ -131,6 +139,23 @@
       }
     }
     @media screen and (max-width:767px) {
+      .white {
+        color: #fff!important;
+        .nav{
+          i{
+            border-top-color: #fff!important;
+          }
+        }
+        .logo-phone {
+          background-position: -92px -270px!important;
+        }
+        .user-phone {
+          background-position: -433px -280px !important;
+        }
+        .maskNav>a{
+          color:#000 !important;
+        }
+      }
       .pc {
         display: none;
       }

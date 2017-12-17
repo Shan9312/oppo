@@ -1,6 +1,6 @@
 # oppo
 
-> 和闪一起写的oppo官网
+
 > *讲解知识点如下：*</br>
 > 1.vue动态添加class，使用:class="{className:isBoolean}",当isBoolean为true添加上此class，为false则remove此class。</br>
 > 2.vue动态添加style，:style="{borderTop:'1px solid '+ color(color为一个变量) }"</br>
